@@ -4,12 +4,12 @@ class Books
 {
     protected $books = [];
 
-    public function add($first)
+    public function add(Book $first)
     {
         $this->books[] = $first;
     }
 
-    public function getOne()
+    public function getOne(): int
     {
         $number = $this->getNumber();
         $this->remove();
@@ -26,7 +26,7 @@ class Books
         array_pop($this->books);
     }
 
-    public function getNumber()
+    public function getNumber(): int
     {
         return count($this->books);
     }
@@ -67,9 +67,9 @@ class Lot
 {
     protected $total = 0;
 
-    public function __construct($first, $second, $third, $fourth, $cinq)
+    public function __construct(int $first, int $second, int $third, int $fourth, int $fifth)
     {
-        $this->total = $first + $second + $third + $fourth + $cinq;
+        $this->total = $first + $second + $third + $fourth + $fifth;
     }
 
     public function getPrice()
@@ -102,7 +102,7 @@ class Basket
     protected $secondBooks;
     protected $books = [];
 
-    public function __construct($firstBooks , $secondBooks, $thirdBooks, $fourthBooks, $fifthBooks)
+    public function __construct(FirstBooks $firstBooks , SecondBooks $secondBooks, ThirdBooks $thirdBooks, FourthBooks $fourthBooks, FifthBooks $fifthBooks)
     {
         $this->firstBooks = $firstBooks;
         $this->secondBooks = $secondBooks;
@@ -140,7 +140,7 @@ class Basket
     /**
      * @return int
      */
-    protected function getLotNumber()
+    protected function getLotNumber(): int
     {
         $number = 0;
         foreach ($this->books as $books) {
@@ -154,7 +154,7 @@ class Basket
      * @param $number
      * @return mixed
      */
-    protected function getNewNumber($books, $number)
+    protected function getNewNumber($books, $number): int
     {
         if ($books->getNumber() > $number) {
             $number = $books->getNumber();
